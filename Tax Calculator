@@ -1,0 +1,44 @@
+Question 1 Input(code): 
+import java.text.DecimalFormat; 
+ 
+public class Employee {     private String name;     private int number;     private double salary; 
+ 
+    public Employee(String name, int number, double salary) {         this.name = name;         this.number = number; 
+        this.salary = salary; 
+    } 
+ 
+    public double calculateTax() {         if (salary <= 10000) {             return 0.0;  // No tax for salary <= 10000 
+        } else if (salary <= 20000) {             return salary * 0.1;  // 10% tax for salary <= 20000 
+        } else if (salary <= 40000) {             return salary * 0.2;  // 20% tax for salary <= 40000 
+        } else { 
+            return salary * 0.25;  // 25% tax for salary > 40000 
+        } 
+    } 
+ 
+    public String getTaxPercentage() { 
+        DecimalFormat df = new DecimalFormat("#.#");         double taxPercentage = 0.0; 
+ 
+3 
+ 	
+ 
+        if (salary <= 10000) {             taxPercentage = 0.0;         } else if (salary <= 20000) {             taxPercentage = 0.1;         } else if (salary <= 40000) {             taxPercentage = 0.2; 
+        } else { 
+            taxPercentage = 0.25; 
+        } 
+ 
+        return df.format(taxPercentage * 100) + ".0%";  // Formats tax percentage as string 
+    } 
+ 
+    public double calculateAmountAfterTax() {         return salary - calculateTax();  // Calculates salary after deducting tax 
+    } 
+ 
+    public void displayEmployeeInfo() { 
+        System.out.println("Name\t\tEmployee No\tSalary\t\tAfter Tax\tTax value");         System.out.println(name + "\t\t" + number + "\t\t" +"R"+ salary + "\t" + "R"+                 calculateAmountAfterTax() + "\t" + getTaxPercentage());  // Displays employee information 
+    } 
+ 
+    public static void main(String[] args) { 
+        Employee employee = new Employee("Nduvho", 5023, 125000); 
+        employee.displayEmployeeInfo();  // Creates an employee object and displays the employee information 
+    } 
+} 
+ 
